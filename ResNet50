@@ -1,0 +1,57 @@
+ResNet-50 is CNN architecture that belongs to the ResNet (Residual Networks) family, a series of models designed to address the challenges associated with training deep neural networks. 
+Developed by researchers at Microsoft Research Asia, ResNet-50 is renowned for its depth and efficiency in image classification tasks. ResNet architectures come in various depths, such as 
+ResNet-18, ResNet-32, and so forth, with ResNet-50 being a mid-sized variant.
+
+ResNet-50 was released in 2015, but remains a notable model in the history of image classification.
+
+ResNet and Residual Blocks
+The primary problem ResNet solved was the degradation problem in deep neural networks. As networks become deeper, their accuracy saturates and then degrades rapidly. This degradation is not 
+caused by overfitting, but rather the difficulty of optimizing the training process.
+
+
+Training error (left) and test error (right) on CIFAR-10 with 20-layer and 56-layer “plain” networks. The deeper network has higher training error, and thus test error. Source
+ResNet solved this problem using Residual Blocks that allow for the direct flow of information through the skip connections, mitigating the vanishing gradient problem.
+
+The residual block used in ResNet-50 is called the Bottleneck Residual Block. This block it has the following architecture:
+
+
+The Bottleneck Residual Block for ResNet-50/101/152. Source
+
+Here's a breakdown of the components within the residual block:
+
+ReLU Activation: The ReLU (Rectified Linear Unit) activation function is applied after each convolutional layer and the batch normalization layers. ReLU allows only positive values to pass 
+through, introducing non-linearity into the network, which is essential for the network to learn complex patterns in the data.
+
+Bottleneck Convolution Layers: the block consists of three convolutional layers with batch normalization and ReLU activation after each.:
+
+The first convolutional layer likely uses a filter size of 1x1 and reduces the number of channels in the input data. This dimensionality reduction helps to compress the data and improve 
+computational efficiency without sacrificing too much information.
+The second convolutional layer might use a filter size of 3x3 to extract spatial features from the data.
+The third convolutional layer again uses a filter size of 1x1 to restore the original number of channels before the output is added to the shortcut connection.
+Skip Connection: As in a standard residual block, the key element is the shortcut connection. It allows the unaltered input to be added directly to the output of the convolutional layers.
+This bypass connection ensures that essential information from earlier layers is preserved and propagated through the network, even if the convolutional layers struggle to learn additional 
+features in that specific block.
+
+By combining convolutional layers for feature extraction with shortcut connections that preserve information flow, and introducing a bottleneck layer to reduce dimensionality, bottleneck
+residual blocks enable ResNet-50 to effectively address the vanishing gradient problem, train deeper networks, and achieve high accuracy in image classification tasks.
+
+Stacking the Blocks: Building ResNet-50
+ResNet-50 incorporates 50 bottleneck residual blocks, arranged in a stacked manner. The early layers of the network feature conventional convolutional and pooling layers to preprocess the
+image before it undergoes further processing by the residual blocks. Ultimately, fully connected layers positioned at the pinnacle of the structure utilize the refined data to categorize 
+the image with precision.
+
+
+ResNet Architectures. Building blocks are shown in brackets with the number of blocks stacked. ResNet-50 architecture is highlighted. Source
+Through the strategic integration of bottleneck residual blocks and shortcut connections, ResNet-50 adeptly mitigates the vanishing gradient issue, enabling the creation of more profound
+and potent models for image classification. This innovative architectural approach has opened the door to notable strides in the field of computer vision.
+
+ResNet Performance
+In this section, we are going to show the ResNet-20, -32, -44, -56, and -110 performance compared to plain neural networks.
+
+
+Comparison between plain neural networks and ResNets. Source
+The dashed lines denote training error, and bold lines denote testing error on CIFAR-10. The left chart shows the training and testing errors using plain networks. The error of plain-110 is 
+higher than 60% and is not displayed. The right chart shows the training and testing errors using ResNets.
+
+In essence, the charts demonstrate the advantage of using skip connections in neural networks. By mitigating the vanishing gradient problem, skip connections allow for deeper networks that 
+can achieve higher accuracy in image classification tasks.
