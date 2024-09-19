@@ -1,4 +1,4 @@
-Quantum Convolutional Neural Networks for Advanced Dermatological Diagnosis
+Quantum Convolutional Neural Networks for Advanced Dermatological Diagnosis  -
 This project leverages Quantum Convolutional Neural Networks (QCNN) integrated with classical deep learning models like ResNet50 to revolutionize the diagnosis of skin diseases. By combining quantum 
 computing with sophisticated image processing, this approach enables faster and more accurate detection of dermatological disorders, particularly at early stages. The project is designed to enhance 
 the precision and efficiency of dermatological diagnosis through an advanced data processing pipeline.
